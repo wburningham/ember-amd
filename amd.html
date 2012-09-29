@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!-- // <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
+	<!-- // <script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.js"></script> -->
+	<!-- // <script src="http://cloud.github.com/downloads/emberjs/ember.js/ember-1.0.pre.min.js"></script> -->
+<script type="text/x-handlebars" data-template-name="application">
+  <h1>Ember Committers</h1>
+  {{outlet}}
+</script>
+<script type="text/x-handlebars" data-template-name="contributors">
+    {{#each person in controller}}
+      <a {{action showContributor person}}> {{person.login}} </a>
+    {{/each}}
+</script>
+<script type="text/x-handlebars" data-template-name="a-contributor">
+  <div>
+    <a {{action showAllContributors}}>All Contributors</a>
+  </div>
+  {{login}} - {{contributions}} contributions to Ember.js
+  <ul>
+    <li><a {{action showDetails}}>Details</a></li>
+    <li><a {{action showRepos}}>Repos</a></li>
+  </ul>
+  <div>
+    {{outlet}}
+  </div>
+</script>
+<script type="text/x-handlebars" data-template-name="contributor-details">
+  <p>{{email}}</p>
+  <p>{{bio}}</p>
+</script>
+<script type="text/x-handlebars" data-template-name="repos">
+  {{#each repo in repos}}
+     {{repo.name}}
+  {{/each}}
+</script>
+​
+<script data-main="js/main" src="js/require.js"></script>
+
+</body>
+</html>
+
